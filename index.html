@@ -9,7 +9,7 @@
   <meta name="keywords" content="">
   <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
-
+  <!-- note: load javascript files at end of body -->
   <script src="libraries/p5.js"></script>
   <script src="libraries/p5.sound.min.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -17,6 +17,27 @@
 </head>
 
 <body>
+  <h3>Send Message</h3>
+
+  <div class="" id="sendDiv">
+
+
+    <textarea id="messageInput" name="name" rows="8" cols="80" placeholder ' "type message here"'></textarea>
+    <button id="sendMessageBtn" type="button" name="button"> send message</button>
+  </div>
+
+  <div class="" id="receiveDiv">
+
+    <button id="receiveMessageBtn" type="button" name="button"> receive message</button>
+    <p id="receivedMessage"> </p>
+  </div>
+
+
+
+
+
+  <!-- load javascript here @ end of body  -->
+  <!-- therefore code won't stumble over trying to find HTML elements loaded yet  -->
   <script src="js/sketch.js"></script>
   <script src="js/gotit.js"></script>
 
