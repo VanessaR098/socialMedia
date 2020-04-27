@@ -5,3 +5,9 @@ html, body {
 canvas {
   display: block;
 }
+.hidden{
+  display: none;
+  /* note the difference between display and visibility... do two different things */
+  /* visibility: hidden;
+  visibility: visible; */
+}

@@ -10,6 +10,7 @@ let folderName = 'messages'; // name of folder you create in db
 let messageInput;
 let sendMessageBtn;
 let receiveMessageBtn;
+let sendAgainBtn;
 let receivedMessage;
 let receiveDiv, sendDiv;
 
@@ -21,6 +22,7 @@ function setup() {
   sendMessageBtn = document.querySelector("#sendMessageBtn");
   receiveMessageBtn = document.querySelector("#receiveMessageBtn");
   receivedMessage = document.querySelector("#receivedMessage");
+  sendAgainBtn = document.querySelector("#sendAgainBtn");
   receiveDiv = document.querySelector("#receiveDiv");
   sendDiv = document.querySelector("#sendDiv");
 
@@ -29,6 +31,7 @@ function setup() {
 
   sendMessageBtn.addEventListener('click', sendMessage);
   receiveMessageBtn.addEventListener('click', receiveMessage);
+  sendAgainBtn.addEventListener('click', sendAgain);
 
 
   // Initialize firebase
@@ -100,6 +103,16 @@ function sendMessage() {
 
     //zero out text area
     messageInput.value = '';
+
+    //sned and receive Div variables are declared at the top and loaded as HTML elements in setup
+    //toggles display...vanilla js DOM maniuplation of how to change the style, the css of an element in js
+    sendDiv.style.display = 'none';
+    receiveDiv.style.display = 'block';
+
+
+
+
+
   } else {
     //alert if nothing is typed in the textarea
     alert("oi. whatchu doing. type a message first >:c");
@@ -116,9 +129,19 @@ function receiveMessage() {
 
       updateNode(folderName, fbDataArray[i].timestamp, {recevied: true});
 
+      receiveMessageBtn.style.display = 'none';
+      sendAgainBtn.style.display = 'block';
+
+
       break;
     }else{
+      receivedMessage.innerHTML = "no more messages out at sea";
       console.log("no more messages out at sea");
     }
   }
+}
+
+function sendAgain(){
+  receiveDiv.style.display = 'none';
+  sendDiv.style.display = 'block';
 }
