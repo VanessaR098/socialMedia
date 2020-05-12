@@ -90,7 +90,7 @@ function sendMessage() {
     nodeData = {
       messageText: messageInput.value,
       timestamp: timestamp, //trailing , at the end is okay
-      received: true,
+      received: false,
     }
 
     //push to firebase!!
@@ -120,14 +120,22 @@ function sendMessage() {
 }
 
 function receiveMessage() {
-  for (var i = 0; i < fbDataArray.length; i++) {
+
+
+
+  //shuffle array first
+  shuffleArray(fbDataArray);
+
+  for (let i = 0; i < fbDataArray.length; i++) {
+    console.log(i); //somebody kill me and this code
     if (fbDataArray[i].received === false) {
       console.log("received message:");
       console.log(fbDataArray[i].messageText);
 
+
       receivedMessage.innerHTML = fbDataArray[i].messageText;
 
-      updateNode(folderName, fbDataArray[i].timestamp, {recevied: true});
+      createNode(folderName, fbDataArray[i].timestamp, {received: true});
 
       receiveMessageBtn.style.display = 'none';
       sendAgainBtn.style.display = 'block';
@@ -142,6 +150,30 @@ function receiveMessage() {
 }
 
 function sendAgain(){
+  //reset receive div
+  receivedMessage.innerHTML = "";
+  receiveMessageBtn.style.display = 'block';
+  sendAgainBtn.style.display = 'none';
+
   receiveDiv.style.display = 'none';
   sendDiv.style.display = 'block';
+}
+
+
+function shuffleArray(_array){
+  // iterate backwards through an array
+for (let i = _array.length - 1; i > 0; i--) {
+
+  // grab random index from 0 to i
+  let randomIndex = Math.floor(Math.random() * (i + 1));
+
+  // swap elements _array[i] and _array[j]
+  [_array[i], _array[randomIndex]] = [_array[randomIndex], _array[i]]; // using "destructuring assignment" syntax
+
+  // same can be written as:
+  // let _arrayItem = _array[i]; // _array item in original position _array[i]
+  // _array[i] = _array[randomIndex]; // overwrite _array[i] with new item at random index
+  // _array[randomIndex] = _arrayItem; // now move array item from original position into random position
+
+}
 }
