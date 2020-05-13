@@ -75,8 +75,18 @@ function sendMessage(){
 
 
 function displayPastChats(){
-  for (let i = 0; i < fbDataArray.length; i++) {
+  let length = fbDataArray.length;
+
+  for (let i = 0; i < length; i++) {
     let p = createP(fbDataArray[i].message);
+    p.position(i*100, random(windowHeight));
+    p.style('background-color',`hsl(${(i*5) % 300}, 80%, 50%)`);
+    let opacity = map(i/length, 0, 1, 0, .9); //makes most current msgs more opaque than older msgs
+    p.style('opactiy', opacity);
+    p.class('messages'); //asigns messages class from css
+    p.parent('messagesDiv');
+
+
 
   }
 }
@@ -84,5 +94,12 @@ function displayPastChats(){
 function displayLastChat(){
   let index = fbDataArray.length-1;
   let p = createP(fbDataArray[index].message);
+  p.position(random(windowWidth), random(windowHeight));
+  p.style('background-color',`hsl(${(index*5) % 300}, 80%, 50%)`);
+  let opacity = map(index/length, 0, 1, 0, .9); //makes most current msgs more opaque than older msgs
+  p.style('opactiy', opacity);
+  p.class('messages');
+
+
 
 }

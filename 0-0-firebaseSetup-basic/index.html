@@ -18,9 +18,20 @@
 
 <body>
   <h3>EZ chat fun</h3>
-  <!-- <textarea name=" " rows="8" cols="80"></textarea> -->
-  <input type="text" id = "input" name="" value="" placeholder = "typehere">
-  <button type="button" id = "sendBtn" name="button"> Send </button>
+  <h5>Scroll right to see most recent message(s) ---> </h5>
+
+  <div class="submitDiv">
+    <!-- <textarea name=" " rows="8" cols="80"></textarea> -->
+    <input type="text" id = "input" name="" value="" placeholder = "typehere">
+    <button type="button" id = "sendBtn" name="button"> Send </button>
+
+  </div>
+
+  <!-- NOTE a class is for group styling... id allows js to locate this exact div-->
+  <div class="" id = "messagesDiv">
+    <!-- messages will be placed inside this div in sketch.js -->
+  </div>
+
 
 
   <!-- load yr javascript here @ end of body -->
