@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>EZ chat fun</title>
+  <title>Autoscroll Chat</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
   <!-- load firebase-app AND firebase-database, which handles the realtime database -->
@@ -17,11 +17,20 @@
 </head>
 
 <body>
-  <h3>EZ chat fun</h3>
-  <!-- <textarea name=" " rows="8" cols="80"></textarea> -->
-  <input type="text" id = "input" name="" value="" placeholder = "typehere">
-  <button type="button" id = "sendBtn" name="button"> Send </button>
+  <h3>Autoscroll Chat</h3>
 
+  <div class="" id = "chat">
+    <div class="" id = "messageDiv">
+      <!-- mmessages will be inserted by js  -->
+    </div>
+    <div class="" id = "sendDiv">
+      <input type="text" id = "usernameInput" name="" value="" placeholder = "username">
+      <input type="text" id = "messageInput" name="" value="" placeholder = "type message here">
+      <button type="button" id = "sendBtn" name="button"> Send </button>
+
+    </div>
+
+  </div>
 
   <!-- load yr javascript here @ end of body -->
   <!-- this way your code won't stumble over trying to find HTML elements that haven't

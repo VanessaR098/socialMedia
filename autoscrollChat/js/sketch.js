@@ -5,10 +5,12 @@ let nodeData; // object we will push to firebase
 let fbData; // data we pull from firebase
 let fbDataArray; // firebase data values converted to an array
 let database; // reference to our firebase database
-let folderName = "chatMessages"; // name of folder you create in db
-let input;
+let folderName = "chat-username"; // name of folder you create in db
+let messageInput;
+let usernameInput;
 let sendBtn;
 let chatsLoaded = false;
+let messageDiv;
 
 function setup() {
 
@@ -19,7 +21,10 @@ function setup() {
   // Copy and paste your config here (replace object commented out)
   // ---> directions on finding config below
 
-  input = select('#input');
+  messageDiv = document.querySelector('#messageDiv');
+
+  usernameInput = select('#usernameInput');
+  messageInput = select('#messageInput');
   sendBtn = select('#sendBtn');
 
   sendBtn.mousePressed(sendMessage);
@@ -63,26 +68,47 @@ function draw() {
 
 function sendMessage(){
 
-  let timestamp = Date.now();
-  let chatObject = {
-    message: input.value(),
-    timestamp: timestamp,
+  if(usernameInput.value() !== '' && messageInput.value() !== ''){
+    let timestamp = Date.now();
+    let chatObject = {
+      username: usernameInput.value(),
+      message: messageInput.value(),
+      timestamp: timestamp,
+      // username,
 
+    }
+    createNode(folderName, timestamp, chatObject);
+    messageInput.value('');
+  }else{
+    alert('type username and message first! >:c')
   }
-  createNode(folderName, timestamp, chatObject);
-  input.value('');
+
+
 }
 
 
 function displayPastChats(){
   for (let i = 0; i < fbDataArray.length; i++) {
-    let p = createP(fbDataArray[i].message);
+
+    let date = new Date(fbDataArray[i].timestamp);
+
+    let p = createP(`${fbDataArray[i].username}: ${fbDataArray[i].message}`);
+    // `${date.getMonth()} <br> ${fbDataArray[i].message}`
+    p.parent('messageDiv');
 
   }
+  messageDiv.scrollTop = messageDiv.scrollHeight - messageDiv.clientHeight;
+  //scrollTop --> what point you're at in the scroll
 }
 
 function displayLastChat(){
   let index = fbDataArray.length-1;
-  let p = createP(fbDataArray[index].message);
+  let p = createP(`${fbDataArray[index].username}: ${fbDataArray[index].message}`);
+  p.parent('messageDiv');
+
+  messageDiv.scrollTop = messageDiv.scrollHeight - messageDiv.clientHeight;
+  //scrollTop --> what point you're at in the scroll
+
+
 
 }
