@@ -66,6 +66,7 @@ function draw() {
 
 }
 
+
 function sendMessage(){
 
   if(usernameInput.value() !== '' && messageInput.value() !== ''){
@@ -85,6 +86,8 @@ function sendMessage(){
 
 
 }
+
+
 
 
 function displayPastChats(){
@@ -108,7 +111,4 @@ function displayLastChat(){
 
   messageDiv.scrollTop = messageDiv.scrollHeight - messageDiv.clientHeight;
   //scrollTop --> what point you're at in the scroll
-
-
-
 }

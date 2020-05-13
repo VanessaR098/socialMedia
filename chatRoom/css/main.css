@@ -1,6 +1,26 @@
 html, body {
   margin: 0;
   padding: 0;
+  background-image: url("https://slis.simmons.edu/blogs/unbound/files/2016/01/arcangel-super-mario-clouds.gif");
+  /* background-repeat: no-repeat; */
+  background-size: auto;
+  /* font-family: 'Bungee Shade', cursive; */
+  /* font-family: 'Monofett', cursive; */
+  /* font-family: 'Libre Barcode 128 Text', cursive; */
+  font-family: 'Press Start 2P', cursive;
+  color: rgb(255, 50, 0);
+
+
+}
+
+h3, h5{
+  font-family: 'Bungee Shade', cursive;
+  z-index: 1;
+  margin: 10px;
+  padding: 1px 1px;
+  border 2px double;
+  background-color: rgba(0, 0, 76, 0.7);
+
 }
 canvas {
   display: block;
@@ -9,11 +29,14 @@ canvas {
   position: fixed;
   top: 30%;
   left: 30%;
-  background-color: #212121;
+  background-color: #36D640;
   padding: 20px;
   z-index: 1;
 }
 
 .messages{
-  padding: 10px;
+  padding: 12%;
+  background-image: url("https://thumbs.gfycat.com/DisgustingPlumpAiredale-max-1mb.gif");
+  background-size: 10% 10%;
+  background-repeat: no-repeat;
 }
